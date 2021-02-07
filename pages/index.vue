@@ -6,9 +6,7 @@
         <vuetify-logo />
       </div>
       <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
+        <v-card-title class="headline"> Hello {{ hello.hello }} </v-card-title>
         <v-card-text>
           <p>
             Vuetify is a progressive Material Design component framework for
@@ -81,6 +79,7 @@
 </template>
 
 <script>
+import gql from 'graphql-tag'
 import Logo from '~/components/Logo.vue'
 import VuetifyLogo from '~/components/VuetifyLogo.vue'
 
@@ -88,6 +87,15 @@ export default {
   components: {
     Logo,
     VuetifyLogo,
+  },
+  apollo: {
+    hello: gql`
+      {
+        hello {
+          hello
+        }
+      }
+    `,
   },
 }
 </script>
